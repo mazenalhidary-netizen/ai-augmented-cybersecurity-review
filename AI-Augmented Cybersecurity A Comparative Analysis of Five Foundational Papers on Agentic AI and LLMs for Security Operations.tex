@@ -1,0 +1,306 @@
+\documentclass[journal]{IEEEtran}
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{url}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    citecolor=blue,
+}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\title{AI-Augmented Cybersecurity: A Comparative Analysis of Five Foundational Papers on Agentic AI and LLMs for Security Operations}
+
+\author{Mazen Abdulmalek Abdulrahman Saif Alhidary \\
+Department of Cybersecurity, Sana'a University, Yemen \\
+Corresponding author: mazen.alhidary@su.edu.ye}
+
+\maketitle
+
+\begin{abstract}
+Large Language Models (LLMs) and autonomous AI (artificial intelligence) are being integrated into cybersecurity functions and have begun to radically change Security Operations Centers (SOCs). Five recent seminal papers have independently driven this field, synergistic perspectives: systematic examination, vendor-centric evaluation, architectural progression, cognitive human-AI partnership, and empirical assessment. This paper is the first comparative review of these five works, systematically evaluating their scope, methodologies, contributions and limitations. Clearly, there is a major gap in the research. However, even though there have been significant theoretical advances, only one of the five papers provides empirical data that is statistically verified. Our analysis reveals six common deficiencies: missing common benchmarks, missing robustness to adversarial attacks, missing human subject studies, missing economic evaluations, missing longitudinal tracking (static evaluations) and non-reproducible artifacts. Based on this synthesis, we propose a prioritized improvement strategy that includes a dynamic SOC-Agent-Bench framework development, a broad deployment research and benchmark implementations for multi-agent systems. These contributions lay a cohesive research agenda for the advancement of trusted, auditable and cost-effective AI-driven cybersecurity techniques.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Agentic AI, Large Language Models, Security Operations Center, cybersecurity automation, human-AI collaboration, multi-agent systems, SOC benchmarking, adversarial robustness
+\end{IEEEkeywords}
+
+\section{Introduction}
+The market for AI in security is expected to reach \$24.8 billion by 2024 and over \$146.5 billion by 2034 with agentic AI being the fastest growing segment~\cite{kshetri2025}. Security Operations Centers (SOCs) are up against unprecedented challenges: over 10,000 alerts per organization daily, false positive rates higher than 50\%, analyst fatigue approaching 35\% annually, and an average detection time of 204 days to catch breaches~\cite{srinivas2025,kim2025}. These demands have spurred the fast adoption of Large Language Models (LLMs) and autonomous AI agents to enhance and streamline SOC operations.
+
+Recent academic publications have identified five seminal papers that provide the intellectual structure for AI-enhanced cybersecurity. Srinivas et al.~\cite{srinivas2025} performed the first large-scale systematic review of LLM and agent implementations across eight SOC tasks using a five-tier capability maturity model. Kshetri~\cite{kshetri2025} discussed the notion of agentic AI from a practitioner's point of view and proposed a Risk Management Framework based on real vendor implementations. Vinay~\cite{vinay2025} proposed a five-tier evolutionary classification describing the architectural evolution from individual LLM reasoners to self-contained multi-agent systems. The paper on Symbiotic Human-AI Collaboration~\cite{symbiotic2025} proposed a cognitive framework based on the dual-process theory and Belief-Desire-Intention model (BDI) architectures. The only empirical assessment with statistical verification was conducted by Yelmo et al.~\cite{yelmo2025}, where the leading LLMs were compared with human specialists in the area of requirements generation for cybersecurity.
+
+This work addresses the lack of methodical comparison with three main contributions: (1) an evaluative comparison over eight facets; (2) integration of six overarching deficiencies; and (3) a ranked improvement strategy with the SOC-Agent-Bench framework.
+
+\section{Comparative Methodology}
+\subsection{Selection Criteria}
+The five articles were selected based on: (1) their publication in peer-reviewed journals or reputable preprints from 2024-2025; (2) their direct relevance to LLM/agentic AI in SOC operations; (3) their distinctive methodological frameworks enabling meaningful comparison; and (4) their citation impact and recognition within the discipline.
+
+\subsection{Comparative Dimensions}
+Each paper was evaluated across nine dimensions: scope, methodology, theoretical grounding, evaluation rigor, reproducibility, practical applicability, coverage of risks, novelty, and limitations. Dual-author review was followed by consensus adjudication.
+
+\subsection{Analysis Protocol}
+Where available, quantitative measures were collected or estimated. For proportion based metrics, where appropriate, Wilson confidence intervals at $\alpha=0.10$ were calculated.
+
+\section{Individual Paper Summaries}
+
+\subsection{Srinivas et al. (2025): ``AI-Augmented SOC: A Survey of LLMs and Agents for Security Automation''}
+
+\textbf{Scope:} Full review of eight SOC functions: log summarization, alert triage, threat intelligence, ticket management, incident response, report creation, asset identification, and vulnerability oversight. The analysis comprises 105 articles published from 2022 to 2025 following PRISMA standards.
+
+\textbf{Key Contributions:} A classification system with eight tasks; a five-level capability maturity framework (Manual $\rightarrow$ Assisted $\rightarrow$ Semi-autonomous $\rightarrow$ Conditionally autonomous $\rightarrow$ Fully autonomous); methodical identification of integration, operational, model, and data impediments.
+
+\textbf{Major Findings:} Large Language Models outperform traditional log analysis methods (LogParser-LLM: 3.6 million logs, 272.5 LLM queries). AI agent frameworks enable 20x faster processing speeds and 98\% notification automation. Multi-agent systems demonstrate up to 150\% improvement in sub-task execution. Existing applications are mostly at maturity levels 1-2.
+
+\subsection{Kshetri (2025): ``Transforming Cybersecurity with Agentic AI to Combat Emerging Cyber Threats''}
+
+\textbf{Scope:} Agentic AI Applications for Practitioners: Managing the Risks and Real-World Vendor Implementations.
+
+\textbf{Key Contributions:} Risk Management Framework for Autonomous AI (Threat $\times$ Vulnerability $\times$ Impact); Novel application of ``Rare Enemy Syndrome'' theory; In-depth vendor case studies (ReliaQuest, CrowdStrike, Darktrace, Twine, Microsoft).
+
+\textbf{Major Findings:} ReliaQuest claims to process 20 times faster, automate 98\% of alerts, and contain in less than 5 minutes. CrowdStrike Charlotte AI claims over 98\% detection triage accuracy. Polluting .01\% of training data sets costs a measly \$60.
+
+\subsection{Vinay (2025): ``The Evolution of Agentic AI in Cybersecurity''}
+
+\textbf{Scope:} Evolutionary classification of architectural development of cybersecurity agents in five generations.
+
+\textbf{Key Contributions:} Five-tier classification (Gen1: Individual LLM Reasoners $\rightarrow$ Gen2: Tool-Enhanced $\rightarrow$ Gen3: Multi-Agent Systems $\rightarrow$ Gen4: MCP-Standardized Framework $\rightarrow$ Gen5: Self-Sufficient Pipelines); intergenerational evaluation; benchmarking landscape assessment.
+
+\textbf{Major Findings:} Gen1 exhibits hallucination rates of 15-25\%; Gen3 diminishes this to 5-15\%; Gen4 facilitates schema-bound execution; there is currently no benchmark that sufficiently evaluates multi-agent collaboration.
+
+\subsection{Symbiotic HAI Paper (2025): ``Symbiotic Human--AI Collaboration for Augmented Cybersecurity Operations''}
+
+\textbf{Scope:} Cognitive and Structural Paradigm for Human-Agent Collaboration in SOC Environments.
+
+\textbf{Key Contributions:} 29 SOC functions categorized into three domains (Observability: 13, Steerability: 11, Evolvability: 5); cognitive mapping involving cognitive mode, attentional focus, and coordination context; four agent roles (Assistant, Auto-Pilot, Companion, Operator); incorporation of BDI mental model; VOWEL+U framework.
+
+\textbf{Major Findings:} The majority of SOC functions are in high cognitive demand areas, current automation is focused on discrete tasks, and new SOC function F30 formalizes oversight by humans.
+
+\subsection{Yelmo et al. (2025): ``Experimental Evaluation of AI-Augmented Cybersecurity Requirements Generation''}
+
+\textbf{Scope:} Empirical evaluation of state-of-the-art LLMs to translate ISO/IEC 27002 controls into custom system requirements.
+
+\textbf{Key Contributions:} First empirical statistical-based evaluation of LLMs on human experts; creation of gold standard via TREC-style pooling (76 validated criteria); large-scale evaluation using Wilson confidence intervals and Jaccard similarity; five different types of hallucinations.
+
+\textbf{Major Findings:} LLaMa 3.1 405B hits 73\% recall, 95\% precision and 1.14 relative F2 score --- beating human benchmarks. Open-weighted models beat GPT-4 Turbo. No chain-of-thought drops recall from 73\% to 27\%. Substantial consistency in valid requirements across runs (Jaccard 0.71-0.79).
+
+\section{Comparative Analysis}
+
+\subsection{Scope and Methodology Comparison}
+TABLE~\ref{tab:scope} summarizes the comparative scope and methodology across the five papers.
+
+\begin{table*}[!t]
+\centering
+\caption{Scope and Methodology Comparison}
+\label{tab:scope}
+\begin{tabularx}{\textwidth}{|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|X|}
+\hline
+\textbf{Paper} & \textbf{Scope} & \textbf{Methodology} & \textbf{Evaluation Rigor} & \textbf{Reproducibility} & \textbf{Key Contributions} \\
+\hline
+Srinivas et al.~\cite{srinivas2025} & 8 SOC functions, 105 articles (2022-2025) & Systematic review (PRISMA) & Theoretical framework & Partial & 8-task taxonomy; 5-level maturity model \\
+\hline
+Kshetri~\cite{kshetri2025} & Agentic AI in cybersecurity practice & Vendor case studies & Qualitative assessment & No & Risk Management Framework; Rare Enemy Syndrome \\
+\hline
+Vinay~\cite{vinay2025} & Architectural evolution of agents & Evolutionary classification & Theoretical & No & 5-generation taxonomy; benchmarking gaps \\
+\hline
+Symbiotic HAI~\cite{symbiotic2025} & Human-AI collaboration in SOC & Cognitive framework & Theoretical & No & 29 SOC functions; BDI integration; VOWEL+U \\
+\hline
+Yelmo et al.~\cite{yelmo2025} & LLM-based requirements generation & Empirical statistical evaluation & High (Wilson CI, Jaccard) & Yes & First empirical evaluation; 5 hallucination types \\
+\hline
+\end{tabularx}
+\end{table*}
+
+\subsection{Evaluation Rigor Comparison}
+Only Yelmo et al. provides statistical hypothesis testing with Wilson confidence intervals ($\alpha=0.10$), Jaccard similarity for reproducibility assessment, and human expert baseline comparison. The four theoretical papers describe what systems could do, not what they actually achieve under controlled conditions.
+
+\subsection{Risk Coverage Comparison}
+Srinivas and Kshetri provide the widest protection from risks (hallucinations, adversarial attacks, data contamination, privacy). Symbiotic HAI, in a different way, addresses the cognitive human elements. Yelmo clearly quantifies hallucination rates via empirical analysis (34\% scope misalignment, 34\% architectural infeasibility). No paper comprehensively addresses all risk categories with empirical measurement.
+
+\section{Synthesis of Cross-Cutting Gaps}
+Six systematic gaps span all five papers:
+
+\begin{itemize}
+    \item \textbf{Gap 1 (Empirical Validation):} Only Yelmo has empirically validated statistical data. Claims about the effectiveness of AI agents (e.g., ``98\% automation,'' ``20$\times$ faster'') have not yet been proven.
+    \item \textbf{Gap 2 (Standardized Benchmark):} Different studies use different metrics, so it is impossible to directly compare systems or track progress over time.
+    \item \textbf{Gap 3 (Adversarial Robustness):} No paper systematically evaluates AI agents under prompt injection, data poisoning, or other attack conditions.
+    \item \textbf{Gap 4 (Human Subject Studies):} All human-AI collaboration claims are theoretical. No paper reports original human subject data on fatigue, trust, or workflow integration.
+    \item \textbf{Gap 5 (Longitudinal Tracking):} All papers capture a single point in time. Rapid LLM advancement obsolesces findings within months.
+    \item \textbf{Gap 6 (Reproducibility):} Only Yelmo provides complete reproducible package. Others provide at most partial information.
+\end{itemize}
+
+\section{Enhancement Proposals}
+The six systematic gaps identified across all five papers (summarized in Table~\ref{tab:gaps}) motivate the following enhancement proposals. Table~\ref{tab:gaps} maps each gap to the affected papers and specific countermeasures.
+
+\subsection{Paper-Specific Enhancements}
+\begin{enumerate}
+    \item \textbf{Srinivas et al.:} Add meta-analysis of reported F1 scores across 105 papers with heterogeneity statistics; transition to living survey with quarterly updates.
+    \item \textbf{Kshetri:} Conduct an independent assessment of vendor claims based on a common data set. Provide a technical implementation guide with architecture diagrams and prompts.
+    \item \textbf{Vinay:} Release reference implementations (Gen1-Gen5) as working code; create SOC-Agent-Bench standardized benchmark.
+    \item \textbf{Symbiotic HAI:} Implement BDI-to-LLM reasoning engine; conduct 30-participant human-in-the-loop experiment.
+    \item \textbf{Yelmo et al.:} Replicate across 5+ diverse systems (healthcare, finance, energy); implement multi-agent collaborative requirements generation.
+\end{enumerate}
+
+\subsection{The SOC-Agent-Bench Framework}
+We propose a unified benchmarking framework that utilizes the strengths of all five studies:
+
+\begin{itemize}
+    \item \textbf{Datasets:} 50,000 real SOC alerts (anonymized); Loghub-2.0, BGL, Spirit, Thunderbird; 2,000 CTI reports with MITRE ATT\&CK mapping.
+    \item \textbf{Tasks (per Srinivas taxonomy):} Log summarization, alert triage, threat intelligence extraction, incident response, report generation.
+    \item \textbf{Agent Generations (per Vinay):} Gen1-5 implementations with increasing autonomy.
+    \item \textbf{Metrics:} Success rate, F1, MTTD, MTTR; hallucination rate (per Yelmo taxonomy); latency (p50, p95, p99); cost per task.
+    \item \textbf{Human Baseline (per Symbiotic HAI):} 30 SOC analysts; NASA-TLX cognitive load; SAGAT situational awareness.
+\end{itemize}
+
+\subsection{Prioritized Implementation Roadmap}
+\begin{itemize}
+    \item \textbf{Phase 1 (Months 1-6):} Release Yelmo reproducibility package; curate unified alert dataset; implement Gen2 reference agent.
+    \item \textbf{Phase 2 (Months 7-12):} Implement Gen3-4 reference agents; run first evaluation on 5 LLMs; conduct 30-participant human baseline; launch public leaderboard v1.0.
+    \item \textbf{Phase 3 (Months 13-24):} Multi-system generalization study; adversarial robustness evaluation; longitudinal quarterly tracking; industry pilot deployments.
+    \item \textbf{Phase 4 (Months 25-36):} Gen5 autonomous pipeline evaluation; cost-benefit meta-analysis; living benchmark v2.0.
+\end{itemize}
+
+\begin{table*}[!t]
+\centering
+\caption{Gaps and Enhancement Proposals}
+\label{tab:gaps}
+\begin{tabularx}{\textwidth}{|p{1.2cm}|p{3.5cm}|p{3.5cm}|X|}
+\hline
+\textbf{Gap} & \textbf{Description} & \textbf{Affected Papers} & \textbf{Enhancement Proposal} \\
+\hline
+Gap 1 & Empirical Validation: Yelmo is the only source of statistically validated data. Other claims of ``98\% automation'' are not substantiated. & Srinivas et al., Vinay, Symbiotic HAI, Kshetri, Yelmo & Srinivas et al.: Add meta-analysis of reported F1 scores across 105 papers with heterogeneity statistics. Vinay, Symbiotic HAI also use heterogeneity statistics. Kshetri: Conduct independent benchmark of vendor claims on standardized dataset. Yelmo et al.: Replicate across 5+ diverse systems (healthcare, finance, energy). \\
+\hline
+Gap 2 & Standardized Benchmark: Incomparable metrics across papers prevent direct system comparison. & All five papers & Vinay: Create SOC-Agent-Bench standardized benchmark. SOC-Agent-Bench Framework: Unified datasets (50k SOC alerts, Loghub-2.0, CTI reports), tasks (log summarization, alert triage, etc.), metrics (success rate, F1, MTTD, MTTR, hallucination rate, latency, cost). \\
+\hline
+Gap 3 & Adversarial Robustness: No paper evaluates prompt injection, data poisoning, or other attacks. & All five papers & Phase 3 (Months 13-24): Adversarial robustness evaluation as part of multi-system generalization study. \\
+\hline
+Gap 4 & Human Subject Studies: All human-AI collaboration claims are theoretical; no original data on fatigue, trust, workflow. & All five papers & Symbiotic HAI: Conduct 30-participant human-in-the-loop experiment. SOC-Agent-Bench Framework: Human baseline with 30 SOC analysts; NASA-TLX cognitive load; SAGAT situational awareness. \\
+\hline
+Gap 5 & Longitudinal Tracking: Single time-point capture; rapid LLM advancement obsolesces findings. & All five papers & Srinivas et al.: Transition to living survey with quarterly updates. Phase 3-4: Longitudinal quarterly tracking; living benchmark v2.0 (Months 25-36). \\
+\hline
+Gap 6 & Reproducibility: Only Yelmo provides complete reproducible package; others provide partial info. & Srinivas et al., Kshetri, Vinay, Symbiotic HAI & Vinay: Release reference implementations (Gen1-Gen5) as working code. Kshetri: Provide technical implementation guide with architecture diagrams and prompts. Phase 1 (Months 1-6): Release Yelmo reproducibility package. \\
+\hline
+\end{tabularx}
+\end{table*}
+
+\section{Conclusion and Recommendations}
+
+\subsection{Summary of Findings}
+This comparative analysis of five foundational papers on AI-augmented cybersecurity reveals a field at an inflection point. Theoretical frameworks have matured significantly: We now have comprehensive classifications of SOC tasks (Srinivas), progressive agent architectures (Vinay), cognitive frameworks for human-AI collaboration (Symbiotic HAI) and risk management structures (Kshetri). However, empirical validation lags substantially. Only one of five papers provides statistically rigorous experimental evidence, and none comprehensively evaluates deployed systems under adversarial conditions or in longitudinal studies.
+
+\subsection{Recommendations for Researchers}
+\begin{itemize}
+    \item \textbf{Emphasize the need for empirical verification:} As Yelmo noted, theoretical models need to be checked through systematic experimentation with statistical accuracy.
+    \item \textbf{Adopt reproducible practices:} Release prompts, code, and data. Pre-register study protocols. Use OSF or Zenodo.
+    \item \textbf{Use standardized metrics:} Report precision, recall, F2 (recall-weighted for safety-critical tasks), with confidence intervals.
+    \item \textbf{Include human subjects:} Test cognitive and usability claims with behavioral data, not mere arguments from theory.
+    \item \textbf{Adversarially evaluate systems:} Test performance against prompt injection, data contamination, and other attack scenarios.
+\end{itemize}
+
+\subsection{Recommendations for Practitioners}
+\begin{itemize}
+    \item \textbf{Approach vendor claims skeptically:} Independent benchmarks are needed; request reproducible evidence.
+    \item \textbf{Invest in prompt engineering:} Yelmo shows prompt design changes performance from 27\% to 73\% recall.
+    \item \textbf{Maintain human oversight:} Even best systems (LLaMa, 95\% precision) still hallucinate; human-in-the-loop required.
+    \item \textbf{Consider open-weights models:} LLaMa outperformed GPT-4 Turbo on requirements generation; local deployment enhances privacy.
+    \item \textbf{Start narrow, scale cautiously:} Begin with assisted tasks (Level 1-2), validate before moving to higher autonomy.
+\end{itemize}
+
+\subsection{Limitations of This Analysis}
+This comparative analysis has several constraints: (1) we analyzed only five papers, except for those which are fundamental; (2) our assessment of vendor claims (Kshetri) relies on secondary reporting; (3) we could not independently verify all reported metrics; (4) the field evolves rapidly---findings may obsolesce within 6-12 months.
+
+\subsection{Final Remarks}
+As autonomous AI and cybersecurity initiatives converge, they offer possible answers to the immediate issues of alert fatigue, analyst shortages, and the rapid rate of emerging threats. The five papers analyzed here have laid strong theoretical foundations. The next challenge is empirical, i.e. careful, repeatable, long-term assessment of these systems in real operational settings under both normal and adverse conditions. In this paper, we present SOC-Agent-Bench, a framework that provides a clear direction. We invite the research community to contribute to its evolution.
+
+\appendices
+\section{Comparative Metrics Summary Table}
+Table~\ref{tab:metrics} provides a quantitative summary of the comparative metrics across the five foundational papers.
+
+\begin{table*}[!t]
+	\centering
+	\caption{Comparative Metrics Summary}
+	\label{tab:metrics}
+	\begin{tabular}{|l|c|c|c|c|c|}
+		\hline
+		\textbf{Metric} & \textbf{Srinivas} & \textbf{Kshetri} & \textbf{Vinay} & \textbf{Symbiotic} & \textbf{Yelmo} \\
+		\hline
+		Papers reviewed & 105 & $\sim$30 & $\sim$54 & $\sim$20 & $\sim$100 \\
+		\hline
+		Tasks covered & 8 & General & SOC workflow & 29 & 1 \\
+		\hline
+		Human subjects & 0 & 0 & 0 & 0 & 3 (experts) \\
+		\hline
+		Statistical tests & 0 & 0 & 0 & 0 & 4 types \\
+		\hline
+		Confidence intervals & 0 & 0 & 0 & 0 & 1 \\
+		\hline
+		Reproducible artifacts & Partial & 0 & 0 & 0 & Full (Zenodo) \\
+		\hline
+		Adversarial testing & Theoretical & Theoretical & Theoretical & 0 & 0 \\
+		\hline
+		Cost analysis & 0 & Partial & 0 & 0 & Partial \\
+		\hline
+	\end{tabular}
+\end{table*}
+
+\section{Enhancement Prioritization Matrix}
+Table~\ref{tab:prioritization} presents the prioritization matrix for the proposed enhancements, mapping each recommendation to its estimated impact, implementation effort, return on investment (ROI), and the primary paper(s) responsible.
+
+\begin{table*}[!t]
+	\centering
+	\caption{Enhancement Prioritization Matrix}
+	\label{tab:prioritization}
+	\begin{tabular}{|l|c|c|c|c|}
+		\hline
+		\textbf{Enhancement} & \textbf{Impact} & \textbf{Effort} & \textbf{ROI} & \textbf{Recommended Paper} \\
+		\hline
+		Meta-analysis & High & Medium & High & Srinivas \\
+		\hline
+		Independent vendor benchmark & Very High & High & Very High & Kshetri \\
+		\hline
+		Reference implementations & Transformative & Very High & Highest & Vinay \\
+		\hline
+		Human experiment & Transformative & Very High & Highest & Symbiotic \\
+		\hline
+		Multi-system replication & Very High & High & Very High & Yelmo \\
+		\hline
+		Living SOC-Agent-Bench & Transformative & Very High & Highest & All \\
+		\hline
+	\end{tabular}
+\end{table*}
+
+\section*{Acknowledgment}
+The author(s) would like to express their gratitude for the assistance provided by artificial intelligence (AI) language tools during the preparation of this manuscript. Specifically, DeepSeek was used exclusively for language-related tasks, including filtering, proofreading, grammar correction, and polishing the text to enhance clarity and readability. The tool was not used to generate research ideas, conduct analyses, or draw conclusions. The author(s) remain fully responsible for the accuracy, originality, and integrity of all content presented in this paper. The authors thank the anonymous referees of the five first papers for their contribution to the field. This meta-synthesis was conducted as a comparative study without external funding.
+
+
+
+\begin{thebibliography}{00}
+\bibitem{kshetri2025} N. Kshetri, ``Transforming cybersecurity with agentic AI to combat emerging cyber threats,'' \emph{Telecommunications Policy}, vol. 49, p. 102976, 2025.
+\bibitem{srinivas2025} S. Srinivas et al., ``AI-Augmented SOC: A Survey of LLMs and Agents for Security Automation,'' \emph{Journal of Cybersecurity and Privacy}, vol. 5, no. 4, p. 95, 2025.
+\bibitem{kim2025} M. Kim et al., ``CyberAlly: Leveraging LLMs and Knowledge Graphs to Empower Cyber Defenders,'' in \emph{Companion Proceedings ACM Web Conference 2025}, pp. 2851-2854.
+\bibitem{vinay2025} V. Vinay, ``The Evolution of Agentic AI in Cybersecurity: From Single LLM Reasoners to Multi-Agent Systems and Autonomous Pipelines,'' \emph{Microsoft Security Research}, 2025.
+\bibitem{symbiotic2025} Symbiotic HAI Authors, ``Symbiotic Human--AI Collaboration for Augmented Cybersecurity Operations,'' \emph{IRT SystemX, Airbus Protect, RTE}, 2025.
+\bibitem{yelmo2025} J. C. Yelmo, Y.-S. Martin, and S. Perez-Acuna, ``Experimental Evaluation of AI-Augmented Cybersecurity Requirements Generation Leveraging LLMs' Capabilities,'' \emph{IEEE Access}, 2025.
+\bibitem{kahneman2011} D. Kahneman, \emph{Thinking, Fast and Slow}. Farrar, Straus and Giroux, 2011.
+\bibitem{endsley2017} M. R. Endsley, ``Toward a theory of situation awareness in dynamic systems,'' \emph{Human Error in Aviation}, pp. 217-249, 2017.
+\bibitem{georgeff1970} M. Georgeff et al., ``The Belief-Desire-Intention Model,'' 1970.
+\bibitem{dasilva2002} J. L. T. da Silva and Y. Demazeau, ``Vowels coordination model,'' 2002.
+\end{thebibliography}
+
+\end{document}
